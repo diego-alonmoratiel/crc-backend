@@ -10,6 +10,7 @@ import lambda_function
 
 @mock_aws
 def test_lambda_handler_updates_visitors():
+    os.environ['AWS_DEFAULT_REGION'] = 'eu-north-1'
     # 1. Create a simulation of DynamoDB table
     dynamodb = boto3.resource("dynamodb", region_name="eu-north-1")
     table = dynamodb.create_table(
