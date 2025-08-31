@@ -20,7 +20,7 @@ jobs:
       
     - name: Run pytest
       working-directory: ./src
-      run: pytest
+      run: pytest -v
         
   deploy:
     runs-on: ubuntu-latest
