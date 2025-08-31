@@ -16,15 +16,11 @@ jobs:
         with:
           python-version: "3.13"
           
-      - name: Change ditectory
-        run: cd src
-
-      - name: Install dependencies
-        run:
-          pip install -r requirements.txt
-
-      - name: Run pytest
-        run: pytest
+      - name: Install dependencies and run tests
+      run: |
+        cd src
+        pip install -r requirements.txt
+        pytest
         
   deploy:
     runs-on: ubuntu-latest
