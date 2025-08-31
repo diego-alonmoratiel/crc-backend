@@ -26,4 +26,4 @@ jobs:
           function-name: fvisitorscount-crc
           code-artifacts-dir: ./src
           handler: lambda_function.lambda_handler
-          runtime: Python 3.13
+          runtime: python3.13
