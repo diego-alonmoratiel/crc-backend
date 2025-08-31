@@ -7,17 +7,29 @@ on:
 
 jobs:
   test-python:
-    runs-on: ubuntu-latest
-    steps:
+  runs-on: ubuntu-latest
+  steps:
     - uses: actions/checkout@v4
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: "3.13"
         
+    - name: Debug file structure
+      run: |
+        echo "=== Root directory ==="
+        ls -la
+        echo "=== Src directory ==="
+        ls -la src/
+        
     - name: Install dependencies
       run: pip install -r requirements.txt
       
+    - name: Debug pytest discovery
+      working-directory: ./src
+      run: |
+        pytest --collect-only -v
+        
     - name: Run pytest
       working-directory: ./src
       run: pytest -v
