@@ -16,7 +16,7 @@ def lambda_handler(event, context):
     },
     UpdateExpression="ADD nvisitors :increase",
     ExpressionAttributeValues={
-        ':increase': 2
+        ':increase': 1
     },
     ReturnValues="UPDATED_NEW"
     )
