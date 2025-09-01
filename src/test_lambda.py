@@ -1,4 +1,5 @@
 import json
+import os
 import pytest
 from moto import mock_aws
 import boto3
@@ -10,6 +11,12 @@ import lambda_function
 
 @mock_aws
 def test_lambda_handler_updates_visitors():
+    # Fake credentials for moto
+    os.environ['AWS_ACCESS_KEY_ID'] = 'testing'
+    os.environ['AWS_SECRET_ACCESS_KEY'] = 'testing'
+    os.environ['AWS_SECURITY_TOKEN'] = 'testing'
+    os.environ['AWS_SESSION_TOKEN'] = 'testing'
+    os.environ['AWS_DEFAULT_REGION'] = 'eu-north-1'
     # 1. Create a simulation of DynamoDB table
     dynamodb = boto3.resource("dynamodb", region_name="eu-north-1")
     table = dynamodb.create_table(
