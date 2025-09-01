@@ -2,7 +2,7 @@ import boto3
 import json
 from decimal import Decimal
 
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource("dynamodb", region_name="eu-north-1")
 table = dynamodb.Table("visitors-count-crc")
 def decimal_default(obj):
     if isinstance(obj, Decimal):
